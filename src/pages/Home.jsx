@@ -1,11 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import PromoBanner from '../components/PromoBanner'
 
 const Home = () => {
   return (
-    
-    <Navbar />
-    
+    <div>
+      <PromoBanner />
+      <Navbar />
+    </div>
   )
 }
 
