@@ -6,6 +6,7 @@ const Container = styled.div`
     height: 100vh;
     display: flex;
     background-color: salmon;
+    position: relative;
 `
 
 const Arrow = styled.div`
@@ -16,15 +17,22 @@ const Arrow = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: ${props => props.direction === "left" && "10px"};
+    right: ${props => props.direction === "right" && "10px"};;
+    margin: auto;
+    cursor: pointer;
 `
 
 const Carrousel = () => {
   return (
     <Container>
-        <Arrow>
+        <Arrow direction="left">
             <ArrowLeft/>
         </Arrow>
-        <Arrow>
+        <Arrow direction="right">
             <ArrowRight/>
         </Arrow>
     </Container>
