@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight } from "@material-ui/icons"
 import styled from "styled-components"
+import { sliderItems } from "../data"
 
 const Container = styled.div`
     width: 100%;
@@ -82,36 +83,18 @@ const Carrousel = () => {
             <ArrowLeft/>
         </Arrow>
         <Wrapper>
-            <Slide bg="#f5fafd">
+            {sliderItems.map((item) => (
+            <Slide bg={item.bg} key={item.id}>
                 <ImageContainer>
-                    <Image src="https://i.ibb.co/DG69bQ4/2.png" />
+                <Image src={item.img} />
                 </ImageContainer>
                 <InfoContainer>
-                    <Title>SUMMER SALE</Title>
-                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
-                    <Button>SHOW NOW</Button>
+                <Title>{item.title}</Title>
+                <Description>{item.desc}</Description>
+                <Button>SHOW NOW</Button>
                 </InfoContainer>
             </Slide>
-            <Slide bg="#fcf1ed">
-                <ImageContainer>
-                    <Image src="https://i.ibb.co/DG69bQ4/2.png" />
-                </ImageContainer>
-                <InfoContainer>
-                    <Title>WINTER SALE</Title>
-                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
-                    <Button>SHOW NOW</Button>
-                </InfoContainer>
-            </Slide>
-            <Slide bg="#fbf0f4">
-                <ImageContainer>
-                    <Image src="https://i.ibb.co/DG69bQ4/2.png" />
-                </ImageContainer>
-                <InfoContainer>
-                    <Title>SPRING SALE</Title>
-                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
-                    <Button>SHOW NOW</Button>
-                </InfoContainer>
-            </Slide>
+            ))}
         </Wrapper>
         <Arrow direction="right">
             <ArrowRight/>
