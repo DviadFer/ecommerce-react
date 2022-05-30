@@ -6,6 +6,7 @@ const Container = styled.div`
     height: 100vh;
     display: flex;
     position: relative;
+    overflow: hidden;
 `
 
 const Arrow = styled.div`
@@ -29,6 +30,7 @@ const Arrow = styled.div`
 
 const Wrapper = styled.div`
     height: 100%;
+    display: flex;
 `
 
 //Estructura de cada pestaña
@@ -37,6 +39,7 @@ const Slide = styled.div`
     height: 100vh;
     display: flex;
     align-items: center;
+    background-color: ${props => props.bg};
 `
 const ImageContainer = styled.div`
     height: 100%;
@@ -79,12 +82,32 @@ const Carrousel = () => {
             <ArrowLeft/>
         </Arrow>
         <Wrapper>
-            <Slide>
+            <Slide bg="#f5fafd">
                 <ImageContainer>
                     <Image src="https://i.ibb.co/DG69bQ4/2.png" />
                 </ImageContainer>
                 <InfoContainer>
                     <Title>SUMMER SALE</Title>
+                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
+                    <Button>SHOW NOW</Button>
+                </InfoContainer>
+            </Slide>
+            <Slide bg="#fcf1ed">
+                <ImageContainer>
+                    <Image src="https://i.ibb.co/DG69bQ4/2.png" />
+                </ImageContainer>
+                <InfoContainer>
+                    <Title>WINTER SALE</Title>
+                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
+                    <Button>SHOW NOW</Button>
+                </InfoContainer>
+            </Slide>
+            <Slide bg="#fbf0f4">
+                <ImageContainer>
+                    <Image src="https://i.ibb.co/DG69bQ4/2.png" />
+                </ImageContainer>
+                <InfoContainer>
+                    <Title>SPRING SALE</Title>
                     <Description>DON'T COMPROMISE ON STYLE! GET FLAT 20% OFF FOR NEW ARRIVALS.</Description>
                     <Button>SHOW NOW</Button>
                 </InfoContainer>
