@@ -36,6 +36,7 @@ const Wrapper = styled.div`
     display: flex;
     // La propiedad transform se modificará con UseState para hacer scroll.
     transform: translate(${props => props.slideId * -100}vw);
+    transition: all 1.5s ease;
 `
 
 //Estructura de cada pestaña
