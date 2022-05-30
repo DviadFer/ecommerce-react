@@ -1,4 +1,5 @@
 import { ArrowLeft, ArrowRight } from "@material-ui/icons"
+import { useState } from "react"
 import styled from "styled-components"
 import { sliderItems } from "../data"
 
@@ -27,11 +28,14 @@ const Arrow = styled.div`
     margin: auto;
     cursor: pointer;
     opacity: 0.5;
+    z-index: 2;
 `
 
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
+    // La propiedad transform se modificará con UseState para hacer scroll.
+    transform: translate(${props => props.slideId * -100}vw);
 `
 
 //Estructura de cada pestaña
@@ -77,12 +81,25 @@ const Button = styled.button`
 
 
 const Carrousel = () => {
+
+  //Hook de React UseState:
+    const [slideId, setSlideId] =useState(0)
+  
+  //Función para modificar la propiedad transform de Wrapper
+    const handleClick = (direction) => {
+        if (direction === "left") {
+            setSlideId(slideId > 0 ? (slideId - 1) : 2)
+        } else {
+            setSlideId(slideId < 2 ? (slideId + 1) : 0)
+        }      
+    }  
+
   return (
     <Container>
-        <Arrow direction="left">
+        <Arrow direction="left" onClick={() => handleClick("left")}>
             <ArrowLeft/>
         </Arrow>
-        <Wrapper>
+        <Wrapper slideId={slideId}>
             {sliderItems.map((item) => (
             <Slide bg={item.bg} key={item.id}>
                 <ImageContainer>
@@ -96,7 +113,7 @@ const Carrousel = () => {
             </Slide>
             ))}
         </Wrapper>
-        <Arrow direction="right">
+        <Arrow direction="right" onClick={() => handleClick("right")}>
             <ArrowRight/>
         </Arrow>
     </Container>
