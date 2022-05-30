@@ -54,9 +54,21 @@ const Image = styled.img`
 
 `
 
-const Title = styled.h1``
-const Description = styled.p``
-const Button = styled.button``
+const Title = styled.h1`
+    font-size: 70px;
+`
+const Description = styled.p`
+    margin: 50px 0;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3px;
+`
+const Button = styled.button`
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+`
 
 
 
