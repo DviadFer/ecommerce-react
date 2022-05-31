@@ -4,7 +4,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 30px;
   height: 60px;
+  background-color: white;
+  z-index: 2000;
+  -webkit-box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 5%);
 `
 // Divisor de la barra de navegación
 const Wrapper = styled.div`
