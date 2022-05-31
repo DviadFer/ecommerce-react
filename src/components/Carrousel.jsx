@@ -59,7 +59,7 @@ const InfoContainer = styled.div`
 
 //Contenido de cada pestaña
 const Image = styled.img`
-    height: 80%;
+    height: 100%;
 
 `
 
