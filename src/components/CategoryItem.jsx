@@ -42,7 +42,7 @@ const Button = styled.button`
 function CategoryItem({item}) {
   return (
     <Container>
-        <Image src={require('../assets/'+item.img+'.jpeg')} />
+        <Image src={require('../assets/categories/'+item.img+'.jpeg')} />
         <Info>
             <Title>{item.title}</Title>
             <Button>SHOP NOW</Button>
