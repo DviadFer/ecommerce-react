@@ -10,7 +10,6 @@ import {
 import styled from "styled-components";
 
 const FooterContainer = styled.div`
-    margin-top: 25px;
     padding: 50px;
     background-color: #1C1C1C;
     color: white;
