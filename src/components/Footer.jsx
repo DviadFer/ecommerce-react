@@ -33,7 +33,7 @@ const Logo = styled.h1`
 `
 
 const Desc = styled.p`
-  margin: 20px 0px;
+  margin-bottom: 20px;
   line-height: 24px;
   text-align: justify;
 `
@@ -128,6 +128,7 @@ const Footer = () => {
             <Container>
                 <Left>
                     <Logo>ECOMMERCE.</Logo>
+                    <Divider />
                     <Desc>
                         This is a <b>template UI for an ecommerce website</b>. React base technology. It was done as part of the final proyect for Web Development applications course. Copyright law provides for the principle, commonly called "fair use" that the reproduction of copyright works for <b>educational purposes only</b>, such as this proyect, does not constitute copyright infringement.
                     </Desc>
@@ -148,6 +149,7 @@ const Footer = () => {
                 </Left>
                 <Center>
                     <Title>Useful Links</Title>
+                    <Divider />
                     <List>
                         <Column>
                             <ListItem>Legal Advise</ListItem>
@@ -165,6 +167,7 @@ const Footer = () => {
                 </Center>
                 <Right>
                     <Title>Contact</Title>
+                    <Divider />
                     <ContactItem>
                         <Room style={{marginRight:"10px"}}/> C/ Ribadavia, 4 - 15007 - A Coruña
                     </ContactItem>
@@ -178,7 +181,7 @@ const Footer = () => {
                 </Right>
             </Container>
             <Divider />
-            <Author>CREATED BY: <b>Diego Vidor Ferreira</b></Author>
+            <Author>CREATED BY: <b>Diego Viador Ferreira</b></Author>
         </FooterContainer>
     )
 }

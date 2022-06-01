@@ -1,5 +1,5 @@
+import { CheckBox, TimeToLeave } from "@material-ui/icons";
 import styled from "styled-components";
-
 
 const Container = styled.div`
   width: 100%;
@@ -8,7 +8,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(${require("../assets/slider/model-4.png")})
+    url(${require("../assets/slider/model-5.jpeg")})
     , center;
   background-size: cover;
   display: flex;
@@ -17,20 +17,20 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 25%;
+  width: 40%;
   padding: 50px;
   background-color: white;
 `;
 
 const Title = styled.h1`
   font-size: 30px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 35px;
 `;
 
 const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
 `;
 
@@ -43,15 +43,23 @@ const Input = styled.input`
   }
 `;
 
+const Agreement = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+`;
+
 const Button = styled.button`
+  display: block;
   width: 50%;
+  margin: 15px auto 0;
   border: none;
   padding: 15px 25px;
   background-color: teal;
   border: 2px solid teal;
   color: white;
   cursor: pointer;
-  margin: 15px 0;
   letter-spacing: 2px;
   font-size: 20px;
   &:hover {
@@ -61,30 +69,28 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-  &:hover {
-      font-weight: bold;
-  }
-`;
-
-const Login = () => {
+const Register = () => {
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
+        <Title>CREATE AN ACCOUNT</Title>
         <Form>
+          <Input placeholder="name" />
+          <Input placeholder="last name" />
           <Input placeholder="username" />
+          <Input placeholder="email" />
           <Input placeholder="password" />
-          <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Input placeholder="confirm password" />
+          <Agreement>
+            <CheckBox style={{color: "teal"}} />  
+            <span>By creating an account, I consent to the processing of my personal
+            data in accordance with the <b>PRIVACY POLICY</b></span>
+          </Agreement>
+          <Button>REGISTER</Button>
         </Form>
       </Wrapper>
     </Container>
   );
 };
 
-export default Login;
+export default Register;
