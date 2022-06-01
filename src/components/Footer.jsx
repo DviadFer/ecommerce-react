@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 
 const FooterContainer = styled.div`
-    padding: 50px;
+    padding: 25px 50px 50px;
     background-color: #1C1C1C;
     color: white;
 `
@@ -127,6 +127,7 @@ const Footer = () => {
         <FooterContainer>
             <Container>
                 <Left>
+                    <Divider />
                     <Logo>ECOMMERCE.</Logo>
                     <Divider />
                     <Desc>
@@ -148,6 +149,7 @@ const Footer = () => {
                     </SocialContainer>
                 </Left>
                 <Center>
+                    <Divider />
                     <Title>Useful Links</Title>
                     <Divider />
                     <List>
@@ -166,6 +168,7 @@ const Footer = () => {
                     </List>
                 </Center>
                 <Right>
+                    <Divider />
                     <Title>Contact</Title>
                     <Divider />
                     <ContactItem>

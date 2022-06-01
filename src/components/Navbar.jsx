@@ -2,6 +2,7 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
+import { Link, useLocation } from "react-router-dom"
 
 const Container = styled.div`
   position: -webkit-sticky; /* Safari */
@@ -57,16 +58,32 @@ const Input = styled.input`
     outline: none;
   }
 `
-const Logo = styled.h1`
+const Logo = styled(Link)`
+  display: block;
   font-weight: bold;
+  cursor: pointer;
+  color: initial;
+  font-size: 35px;
+  text-decoration: none;
 `
 
-const MenuItem = styled.div`
+const MenuItem = styled(Link)`
+  display: block;
   font-size: 14px;
   cursor: pointer;
+  color: initial;
+  font-size: initial;
+  text-decoration: none;
+  padding: 10px;
+  &:hover {
+    text-decoration: underline;
+  }
 `
 
 const Navbar = () => {
+
+  const location = useLocation()
+
   return (
     <Container>
       <Wrapper>
@@ -78,16 +95,22 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>ECOMMERCE.</Logo>
+          <Logo to="/">ECOMMERCE.</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-          <Badge badgeContent={8} color="primary">
-              <ShoppingCartOutlined />
-          </Badge>
-          </MenuItem>
+          {location.pathname != "/login" && location.pathname != "/register" ? (
+            <MenuItem to="/register">REGISTER</MenuItem>
+          ): null}  
+          {location.pathname != "/login" && location.pathname != "/register" ? (
+            <MenuItem component={Link} to="/login">SIGN IN</MenuItem>
+          ): null}
+          {location.pathname != "/cart" ? (
+            <MenuItem to="/cart">
+              <Badge badgeContent={8} color="primary">
+                  <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          ): null}
         </Right>
       </Wrapper>
     </Container>
