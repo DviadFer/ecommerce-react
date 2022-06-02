@@ -1,4 +1,5 @@
 import { Send } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -40,11 +41,21 @@ const Input = styled.input`
   }
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background-color: teal;
+  border: 1px solid teal;
   color: white;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid lightgray;
+  }
 `
 
 const Newsletter = () => {
@@ -54,7 +65,7 @@ const Newsletter = () => {
       <Desc>Get timely updates from your favorite products.</Desc>
       <InputContainer>
         <Input placeholder="Your email" />
-        <Button>
+        <Button to="/not-found">
           <Send />
         </Button>
       </InputContainer>

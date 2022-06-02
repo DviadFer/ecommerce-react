@@ -7,6 +7,7 @@ import {
     Room,
     Twitter,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const FooterContainer = styled.div`
@@ -85,7 +86,9 @@ const Column = styled.div`
   align-items: flex-start;
 `
 
-const ListItem = styled.p`
+const ListItem = styled(Link)`
+  color: white;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {
@@ -134,16 +137,28 @@ const Footer = () => {
                         This is a <b>template UI for an ecommerce website</b>. React base technology. It was done as part of the final proyect for Web Development applications course. Copyright law provides for the principle, commonly called "fair use" that the reproduction of copyright works for <b>educational purposes only</b>, such as this proyect, does not constitute copyright infringement.
                     </Desc>
                     <SocialContainer>
-                        <SocialIcon>
+                        <SocialIcon onClick={(e) => {
+                            e.preventDefault();
+                            window.open('http://facebook.com', '_blank')
+                        }}>
                             <Facebook />
                         </SocialIcon>
-                        <SocialIcon>
+                        <SocialIcon onClick={(e) => {
+                            e.preventDefault();
+                            window.open('http://instagram.com', '_blank')
+                        }}>
                             <Instagram />
                         </SocialIcon>
-                        <SocialIcon>
+                        <SocialIcon onClick={(e) => {
+                            e.preventDefault();
+                            window.open('http://twitter.com', '_blank')
+                        }}>
                             <Twitter />
                         </SocialIcon>
-                        <SocialIcon>
+                        <SocialIcon onClick={(e) => {
+                            e.preventDefault();
+                            window.open('http://pinterest.com', '_blank')
+                        }}>
                             <Pinterest />
                         </SocialIcon>
                     </SocialContainer>
@@ -154,16 +169,16 @@ const Footer = () => {
                     <Divider />
                     <List>
                         <Column>
-                            <ListItem>Legal Advise</ListItem>
-                            <ListItem>Cookie Policy</ListItem>
-                            <ListItem>Privacy Policy</ListItem>
-                            <ListItem>Shipping</ListItem>
+                            <ListItem to="/not-found">Legal Advise</ListItem>
+                            <ListItem to="/not-found">Cookie Policy</ListItem>
+                            <ListItem to="/not-found">Privacy Policy</ListItem>
+                            <ListItem to="/not-found">Shipping</ListItem>
                         </Column>
                         <Column>
-                            <ListItem>My Account</ListItem>
-                            <ListItem>Order Tracking</ListItem>
-                            <ListItem>Wishlist</ListItem>
-                            <ListItem>Terms</ListItem>
+                            <ListItem to="/not-found">My Account</ListItem>
+                            <ListItem to="/not-found">Order Tracking</ListItem>
+                            <ListItem to="/not-found">Wishlist</ListItem>
+                            <ListItem to="/not-found">Terms</ListItem>
                         </Column>
                     </List>
                 </Center>

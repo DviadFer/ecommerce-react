@@ -12,8 +12,8 @@ const Container = styled.div`
 `
 
 const Arrow = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background-color: #fff7f7;
     border-radius: 50%;
     display: flex;
@@ -98,7 +98,7 @@ const Carrousel = () => {
   return (
     <Container>
         <Arrow direction="left" onClick={() => handleClick("left")}>
-            <ArrowLeft/>
+            <ArrowLeft style={{transform:"scale(1.8)"}}/>
         </Arrow>
         <Wrapper slideId={slideId}>
             {sliderItems.map((item) => (
@@ -115,7 +115,7 @@ const Carrousel = () => {
             ))}
         </Wrapper>
         <Arrow direction="right" onClick={() => handleClick("right")}>
-            <ArrowRight/>
+            <ArrowRight  style={{transform:"scale(1.8)"}}/>
         </Arrow>
     </Container>
   )

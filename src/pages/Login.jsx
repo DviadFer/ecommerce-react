@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -14,25 +15,25 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 const Wrapper = styled.div`
   width: 25%;
   padding: 50px;
   background-color: white;
-`;
+`
 
 const Title = styled.h1`
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 35px;
-`;
+`
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`;
+`
 
 const Input = styled.input`
   flex: 1;
@@ -41,9 +42,9 @@ const Input = styled.input`
   &::placeholder {
     font-size: 20px;
   }
-`;
+`
 
-const Button = styled.button`
+const Button = styled(Link)`
   width: 50%;
   border: none;
   padding: 15px 25px;
@@ -54,21 +55,23 @@ const Button = styled.button`
   margin: 15px 0;
   letter-spacing: 2px;
   font-size: 20px;
+  text-align: center;
+  text-decoration: none;
   &:hover {
     background-color: white;
     border: 2px solid black;
     color: black;
   }
-`;
+`
 
-const Link = styled.a`
+const Related = styled(Link)`
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
   &:hover {
       font-weight: bold;
   }
-`;
+`
 
 const Login = () => {
   return (
@@ -78,13 +81,13 @@ const Login = () => {
         <Form>
           <Input placeholder="username" />
           <Input placeholder="password" />
-          <Button>LOGIN</Button>
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <Button to="/not-found">LOGIN</Button>
+          <Related to="/not-found">DO NOT YOU REMEMBER THE PASSWORD?</Related>
+          <Related to="/register">CREATE A NEW ACCOUNT</Related>
         </Form>
       </Wrapper>
     </Container>
-  );
-};
+  )
+}
 
 export default Login;
