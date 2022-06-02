@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -30,13 +31,19 @@ const Title = styled.h1`
     margin-bottom: 20px;
 `
 
-const Button = styled.button`
+const Button = styled(Link)`
     border: none;
-    padding: 10px;
+    padding: 8px 18px;
     background-color: white;
+    border: 2px solid white;
     color: gray;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
+
+    &:hover {
+        border: 2px solid gray;
+    }
 `
 
 function CategoryItem({item}) {
@@ -45,7 +52,7 @@ function CategoryItem({item}) {
         <Image src={require('../assets/categories/'+item.img+'.jpeg')} />
         <Info>
             <Title>{item.title}</Title>
-            <Button>SHOP NOW</Button>
+            <Button to="/shop">SHOP NOW</Button>
         </Info>
     </Container>
   )
