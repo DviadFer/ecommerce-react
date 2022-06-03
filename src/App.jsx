@@ -8,11 +8,14 @@ import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import PromoBanner from './components/PromoBanner';
+
+//Páginas
 import Home from "./pages/Home";
 import Shop from "./pages/Shop"
 import Cart from "./pages/Cart"
 import Login from './pages/Login';
 import Register from './pages/Register';
+import SingleProduct from "./pages/SingleProduct"
 import WIP from './pages/WIP';
 
 //Commerce.js
@@ -47,6 +50,7 @@ const App = () => {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />
+              <Route path='/single-product' element={<SingleProduct />} />
             </Routes>
           </ScrollToTop>
         <Footer />
