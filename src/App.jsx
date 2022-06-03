@@ -1,5 +1,10 @@
+import React, { useState, useEffect } from 'react';
+
+//Router
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+
+//Componentes
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import PromoBanner from './components/PromoBanner';
@@ -10,7 +15,25 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import WIP from './pages/WIP';
 
+//Commerce.js
+import { commerce } from './lib/commerce';
+
 const App = () => {
+
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  console.log(products)
+
   return (
     <Router>
       <div>

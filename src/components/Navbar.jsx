@@ -98,13 +98,13 @@ const Navbar = () => {
           <Logo to="/">ECOMMERCE.</Logo>
         </Center>
         <Right>
-          {location.pathname != "/login" && location.pathname != "/register" ? (
+          {location.pathname !== "/login" && location.pathname !== "/register" ? (
             <MenuItem to="/register">REGISTER</MenuItem>
           ): null}  
-          {location.pathname != "/login" && location.pathname != "/register" ? (
+          {location.pathname !== "/login" && location.pathname !== "/register" ? (
             <MenuItem component={Link} to="/login">SIGN IN</MenuItem>
           ): null}
-          {location.pathname != "/cart" ? (
+          {location.pathname !== "/cart" ? (
             <MenuItem to="/cart">
               <Badge badgeContent={8} color="primary">
                   <ShoppingCartOutlined />
