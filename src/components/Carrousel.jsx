@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { sliderItems } from "../data"
+import { mobile } from "../responsive"
 
 const Container = styled.div`
     width: 100%;
@@ -44,8 +45,7 @@ const Wrapper = styled.div`
 const Slide = styled.div`
     width: 100vw;
     height: 100vh;
-    display: flex;
-    align-items: center;
+    position: relative;
     background-color: ${props => props.bg};
 `
 const ImageContainer = styled.div`
@@ -54,18 +54,23 @@ const ImageContainer = styled.div`
 `
 
 const InfoContainer = styled.div`
-    flex: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-0%, -50%);
     padding: 50px;
+    ${mobile({transform: "translate(-50%, -50%)", width: "80%"})}
 `
 
 //Contenido de cada pestaña
 const Image = styled.img`
     height: 100%;
-
+    ${mobile({filter: "opacity(50%)"})}
 `
 
 const Title = styled.h1`
     font-size: 70px;
+    ${mobile({fontSize: "45px"})}
 `
 const Description = styled.p`
     margin: 50px 0;
