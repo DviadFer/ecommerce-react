@@ -23,6 +23,7 @@ import { commerce } from './lib/commerce';
 
 const App = () => {
 
+  //Fetch de todos los productos
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
@@ -45,12 +46,12 @@ const App = () => {
           <ScrollToTop>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/shop' element={<Shop />} />
+              <Route path='/shop' element={<Shop products={products}/>} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />
-              <Route path='/single-product' element={<SingleProduct />} />
+              <Route path='/single-product/:id' element={<SingleProduct />} />
             </Routes>
           </ScrollToTop>
         <Footer />

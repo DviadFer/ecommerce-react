@@ -1,6 +1,18 @@
 import { SearchOutlined, FavoriteBorderOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const animatePop = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+`
 
 const Info = styled.div`
 opacity: 0;
@@ -18,6 +30,9 @@ transition: all 0.5s ease;
 `
 
 const Wrapper = styled.div`
+    animation-duration: 0.5s;
+    animation-name: ${animatePop};
+    animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
     transition: all 0.5s ease;
     &:hover {
         box-shadow: 2px 2px 2px 2px lightgrey;
@@ -28,38 +43,41 @@ const Wrapper = styled.div`
 `
 
 const Container = styled.div`
-flex: 1;
-margin: 5px;
-min-width: 280px;
-height: 350px;
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #f5fbfd;
-position: relative;
-`
-
-const Circle = styled.div`
-width: 200px;
-height: 200px;
-border-radius: 50%;
-background-color: white;
-position: absolute;
+    flex: 1;
+    margin: 5px;
+    min-width: 280px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 `
 
 const Image = styled.img`
-height: 75%;
-z-index: 2;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
 `
+
+const Tag = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 15px;
+`
+
 const Title = styled(Link)`
-  display: block;
-  width: fit-content;
-  margin: 10px auto;
   font-size: 20px;
   font-weight: 600;
   text-decoration: none;
   text-transform: uppercase;
   color: black;
+`
+
+const Price = styled.p`
+    font-size: 25px;
+    font-weight: 300;
+    letter-spacing: 2px;
 `
 
 const Icon = styled(Link)`
@@ -79,14 +97,13 @@ transition: all 0.5s ease;
 }
 `
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ product }) => {
     return (
         <Wrapper>
             <Container>
-                <Circle />
-                <Image src={require('../assets/popularProducts/'+item.img+'.png')} />
+                <Image src={product.image.url} />
                 <Info>
-                    <Icon to="/single-product">
+                    <Icon to={`/single-product/${product.id}`}>
                         <SearchOutlined />
                     </Icon>
                     <Icon to="/not-found">
@@ -94,7 +111,10 @@ const ProductCard = ({ item }) => {
                     </Icon>
                 </Info>
             </Container>
-            <Title to="/single-product">Test Title</Title>
+            <Tag>
+                <Title to={`/single-product/${product.id}`}>{product.name}</Title>
+                <Price>{product.price.raw} €</Price>
+            </Tag>
         </Wrapper>
     )
 }

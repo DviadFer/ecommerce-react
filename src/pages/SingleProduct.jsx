@@ -1,13 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import { Add, ArrowLeft, Remove } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { commerce } from '../lib/commerce';
 
 import { mobile } from "../responsive";
+
+const animatePop = keyframes`
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  75% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+`
 
 const Container = styled.div`
   width: 90%;
   max-width: 1200px;
+  height: fit-content;
   margin: auto;
+  animation-duration: 1s;
+  animation-name: ${animatePop};
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
 `
 
 const Wrapper = styled.div`
@@ -16,14 +39,13 @@ const Wrapper = styled.div`
   ${mobile({ padding: "10px", flexDirection:"column" })}
 `
 
-const ImgContainer = styled.div`
-  flex: 1;
-`
-
 const Image = styled.img`
+  display: block;
+  flex: 1;
   width: 100%;
-  height: 50vh;
   object-fit: contain;
+  object-position: top;
+  ${mobile({ width: "70%", margin: "auto" })}
 `
 
 const InfoContainer = styled.div`
@@ -41,12 +63,12 @@ const Desc = styled.p`
 `
 
 const Price = styled.span`
-  font-weight: 100;
+  font-weight: 200;
   font-size: 40px;
 `
 
 const FilterContainer = styled.div`
-  width: 50%;
+  width: 100%;
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
@@ -69,12 +91,18 @@ const FilterColor = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.color};
   margin: 0px 5px;
+  box-shadow: 2px 2px 2px lightgray;
   cursor: pointer;
+  &:focus {
+    outline: black;
+  }
 `
 
 const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
+  background-color: white;
+  border: 1px solid gray;  
 `
 
 const FilterSizeOption = styled.option``;
@@ -140,40 +168,56 @@ const Back = styled(Link)`
 `
 
 const Product = () => {
+
+  //Fetch de producto por id 
+  const [productById, setProductById] = useState({});
+
+  const fetchProductById = async (id) => {
+    const { name, description, image, price, variant_groups } = await commerce.products.retrieve(id)
+    setProductById({
+      id, 
+      name,
+      description,
+      src: image.url,
+      price: price.raw,
+      variant_groups
+    })
+  }
+
+  useEffect(() => {
+    const id = window.location.pathname.split("/")
+    
+    fetchProductById(id[2]);
+  }, []);
+
+  console.log(productById)
+
   return (
     <Container>
       <Wrapper>
-        <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
-        </ImgContainer>
+        <Image src={productById.src} />
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
-          </Desc>
-          <Price>$ 20</Price>
-          <FilterContainer>
-            <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
-            </Filter>
-            <Filter>
-              <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-              </FilterSize>
-            </Filter>
-          </FilterContainer>
+          <Title>{productById.name}</Title>
+          <Desc dangerouslySetInnerHTML={{ __html: productById.description}}/>
+          <Price>{productById.price} €</Price>
+          {productById.variant_groups?.length ? (
+            <FilterContainer>
+              <Filter>
+                <FilterTitle>{productById.variant_groups[1].name}</FilterTitle>
+                {productById.variant_groups[1].options.map((option) => (
+                  <FilterColor color={option.name} />
+                ))}
+              </Filter>
+              <Filter>
+                <FilterTitle>{productById.variant_groups[0].name}</FilterTitle>
+                <FilterSize>
+                  {productById.variant_groups[0].options.map((option) => (
+                    <FilterSizeOption>{option.name}</FilterSizeOption>
+                  ))}
+                </FilterSize>
+              </Filter>
+            </FilterContainer>
+          ): null}
           <AddContainer>
             <AmountContainer>
               <Remove />
@@ -194,3 +238,4 @@ const Product = () => {
 }
 
 export default Product
+

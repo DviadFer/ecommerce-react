@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import ProductCard from "../components/ProductCard";
-import { popularProducts } from "../data";
-
 
 const Container = styled.div`
   width: 90%;
@@ -30,14 +28,16 @@ const Wrapper = styled.div`
   margin-bottom: 35px;
 `
 
-const Shop = () => {
+
+
+const Shop = ({ products }) => {
   return (
     <Container>
       <Title>Shoping Products</Title>
       <Divider />
       <Wrapper>
-        {popularProducts.map((item) => (
-          <ProductCard item={item} key={item.id} />
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </Wrapper>
     </Container>
