@@ -39,6 +39,9 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  &::placeholder {
+    font-size: 20px;
+  }
 `
 
 const Button = styled(Link)`

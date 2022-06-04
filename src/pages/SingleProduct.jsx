@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-`;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+`
 
 const Wrapper = styled.div`
   padding: 50px;

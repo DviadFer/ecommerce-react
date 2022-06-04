@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight } from "@material-ui/icons"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { sliderItems } from "../data"
 
@@ -72,11 +73,19 @@ const Description = styled.p`
     font-weight: 500;
     letter-spacing: 3px;
 `
-const Button = styled.button`
+const Button = styled(Link)`
+    border: 1px solid black;
+    color: black;
+    text-decoration: none;
     padding: 10px;
     font-size: 20px;
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover {
+        background-color: black;
+        color: white;
+    }
 `
 
 
@@ -109,7 +118,7 @@ const Carrousel = () => {
                 <InfoContainer>
                     <Title>{item.title}</Title>
                     <Description>{item.desc}</Description>
-                    <Button>SHOW NOW</Button>
+                    <Button to='/shop'>SHOW NOW</Button>
                 </InfoContainer>
             </Slide>
             ))}
