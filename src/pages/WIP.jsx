@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Announcement } from "@material-ui/icons"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { mobile } from "../responsive";
 
@@ -44,7 +44,7 @@ const Message = styled.p`
     font-size: 25px;
     font-weight: 400;
 `
-const Button = styled(Link)`
+const Button = styled.div`
   display: block;
   width: 25%;
   border: none;
@@ -56,7 +56,6 @@ const Button = styled(Link)`
   letter-spacing: 2px;
   font-size: 20px;
   text-align: center;
-  text-decoration: none;
   &:hover {
     background-color: white;
     border: 2px solid black;
@@ -65,19 +64,22 @@ const Button = styled(Link)`
 `
 
 const WIP = () => {
-    return (
-        <Container>
-          <Wrapper>
-            <Issue>
-               <Announcement style={{transform: "scale(2.0)", color: "teal"}}/>
-               <Title>Maintenaince Issue:</Title>
-            </Issue>
-            <Message>We are currently working on implementing this feature in the near future. Forgive any inconveniences.</Message>
-            <Message>Kind regards, <b>ECOMMERCE. online shop team</b>.</Message>
-            <Button to="/">BACK</Button>
-          </Wrapper>
-        </Container>
-      )
+
+  const navigate = useNavigate();
+
+  return (
+      <Container>
+        <Wrapper>
+          <Issue>
+              <Announcement style={{transform: "scale(2.0)", color: "teal"}}/>
+              <Title>Maintenaince Issue:</Title>
+          </Issue>
+          <Message>We are currently working on implementing this feature in the near future. Forgive any inconveniences.</Message>
+          <Message>Kind regards, <b>ECOMMERCE. online shop team</b>.</Message>
+          <Button onClick={() => navigate(-1)}>BACK</Button>
+        </Wrapper>
+      </Container>
+    )
 }
 
 export default WIP

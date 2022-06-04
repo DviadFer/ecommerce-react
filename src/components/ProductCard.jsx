@@ -1,4 +1,4 @@
-import { SearchOutlined } from "@material-ui/icons";
+import { SearchOutlined, FavoriteBorderOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -87,7 +87,10 @@ const ProductCard = ({ item }) => {
                 <Image src={require('../assets/popularProducts/'+item.img+'.png')} />
                 <Info>
                     <Icon to="/single-product">
-                    <SearchOutlined />
+                        <SearchOutlined />
+                    </Icon>
+                    <Icon to="/not-found">
+                        <FavoriteBorderOutlined />
                     </Icon>
                 </Info>
             </Container>

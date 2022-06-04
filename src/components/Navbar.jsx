@@ -47,7 +47,6 @@ const Right = styled.div`
 //Contenido de la barra de navegación
 const Language = styled.span`
   font-size: 14px;
-  cursor: pointer;
 `
 
 const SearchContainer = styled.div`
