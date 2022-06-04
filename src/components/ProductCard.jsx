@@ -23,8 +23,8 @@ const Wrapper = styled.div`
         box-shadow: 2px 2px 2px 2px lightgrey;
     }
     &:hover ${Info}{
-    opacity: 1;
-}
+        opacity: 1;
+    }
 `
 
 const Container = styled.div`
@@ -67,6 +67,7 @@ width: 40px;
 height: 40px;
 border-radius: 50%;
 background-color: white;
+color: black;
 display: flex;
 align-items: center;
 justify-content: center;
