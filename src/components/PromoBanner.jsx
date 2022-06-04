@@ -22,7 +22,6 @@ const PromoBanner = () => {
     <Container>
         <LocalShipping style={{fontSize: 20}} />
         Season sale! Free Shipping on orders over 50€
-        <LocalShipping style={{fontSize: 20}} />
     </Container>
   )
 }

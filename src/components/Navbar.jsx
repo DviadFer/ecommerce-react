@@ -28,11 +28,12 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  ${mobile({ display: "none" })}
 `
 const Center = styled.div`
   flex: 1;
   text-align: center;
-  ${mobile({flex: "2", textAlign: "left"})}
+  ${mobile({textAlign: "left"})}
 `
 const Right = styled.div`
   flex: 1;
@@ -40,14 +41,13 @@ const Right = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 25px;
-  ${mobile({flex: "2", gap: "0" })}
+  ${mobile({gap: "0" })}
 `
 
 //Contenido de la barra de navegación
 const Language = styled.span`
   font-size: 14px;
   cursor: pointer;
-  ${mobile({ display: "none" })}
 `
 
 const SearchContainer = styled.div`
@@ -56,7 +56,6 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
-  ${mobile({ borderRadius: "50%", marginLeft: "0", cursor: "pointer" })}
 `
 
 const Input = styled.input`
@@ -64,7 +63,6 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-  ${mobile({ display: "none" })}
 `
 const Logo = styled(Link)`
   display: block;
@@ -128,7 +126,7 @@ const Navbar = () => {
           {location.pathname !== "/cart" ? (
             <MenuItem to="/cart">
               <Badge badgeContent={8} color="primary">
-                  <ShoppingCartOutlined />
+                  <ShoppingCartOutlined style={{fontSize: "25px"}} />
               </Badge>
             </MenuItem>
           ): null}
