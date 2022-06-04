@@ -91,6 +91,7 @@ const Button = styled(Link)`
         background-color: black;
         color: white;
     }
+    ${mobile({backgroundColor: "#ffffff98"})}
 `
 
 

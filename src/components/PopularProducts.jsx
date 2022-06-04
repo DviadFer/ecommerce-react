@@ -55,6 +55,7 @@ const Container = styled.div`
   &:hover + ${Button} {
     opacity: 1;
   }
+  ${mobile({animationDuration: "20s"})}
 `
 
 
