@@ -167,7 +167,7 @@ const Back = styled(Link)`
   ${mobile({ marginBottom: "25px" })}
 `
 
-const Product = () => {
+const Product = ({  onAddToCart }) => {
 
   //Fetch de producto por id 
   const [productById, setProductById] = useState({});
@@ -189,8 +189,6 @@ const Product = () => {
     
     fetchProductById(id[2]);
   }, []);
-
-  console.log(productById)
 
   return (
     <Container>
@@ -224,7 +222,9 @@ const Product = () => {
               <Amount>1</Amount>
               <Add />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={() => onAddToCart(productById.id, 1)}>
+              ADD TO CART
+            </Button>
           </AddContainer>
           <Divider />
           <Back to="/shop">

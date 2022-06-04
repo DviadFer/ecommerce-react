@@ -23,26 +23,42 @@ import { commerce } from './lib/commerce';
 
 const App = () => {
 
-  //Fetch de todos los productos
+  //Fetch de todos los productos 
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
 
     setProducts(data);
-  };
+  }
 
+  //Creación de un carro vacío
+  const [cart, setCart] = useState({});
+
+  const fetchCart = async () => {
+    setCart(await commerce.cart.retrieve());
+  }
+
+  //Uso de ambos hooks anteriores
   useEffect(() => {
     fetchProducts();
-  }, []);
+    fetchCart();
+  }, [])
 
-  console.log(products)
+  //Función que actualiza el carro creado con los items añadidos
+  const handleAddToCart = async (productId, quantity) => {
+    const item = await commerce.cart.add(productId, quantity);
+
+    setCart(item.cart);
+  }  
+
+  console.log(cart)
 
   return (
     <Router>
       <div>
         <PromoBanner />
-        <Navbar />
+        <Navbar totalItems={cart.total_items} />
           <ScrollToTop>
             <Routes>
               <Route path='/' element={<Home />} />
@@ -51,7 +67,7 @@ const App = () => {
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />
-              <Route path='/single-product/:id' element={<SingleProduct />} />
+              <Route path='/single-product/:id' element={<SingleProduct  onAddToCart={handleAddToCart} />} />
             </Routes>
           </ScrollToTop>
         <Footer />

@@ -92,7 +92,7 @@ const ItemText = styled.p`
   ${mobile({display: "none"})}
 `
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
 
   const location = useLocation()
 
@@ -124,7 +124,7 @@ const Navbar = () => {
           ): null}
           {location.pathname !== "/cart" ? (
             <MenuItem to="/cart">
-              <Badge badgeContent={8} color="primary">
+              <Badge badgeContent={totalItems} color="primary">
                   <ShoppingCartOutlined style={{fontSize: "25px"}} />
               </Badge>
             </MenuItem>
