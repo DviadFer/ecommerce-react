@@ -5,6 +5,8 @@ import styled, { keyframes }  from "styled-components"
 import { popularProducts } from "../data"
 import Product from "./PopularSingleProduct"
 
+import { mobile } from "../responsive";
+
 const Scroll = keyframes`
   from {margin-left: 0%}
   to {margin-left: -90%}
@@ -31,6 +33,7 @@ const Button = styled.div`
   color: black;
   font-size: 24px;
   pointer-events: none;
+  ${mobile({opacity: "1", width: "180px", boxShadow: "2px 2px 5px 2px grey"})}
 `
 
 const Container = styled.div`

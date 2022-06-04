@@ -9,6 +9,7 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const FooterContainer = styled.div`
     padding: 25px 50px 50px;
@@ -20,7 +21,8 @@ const Container = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-evenly;
-    gap: 100px;
+    gap: 50px;
+    ${mobile({ flexDirection: "column", gap: "25px"})}
 `
 
 const Left = styled.div`
@@ -63,6 +65,7 @@ const SocialIcon = styled.div`
 
 const Center = styled.div`
   flex: 1;
+  ${mobile({ display: "none" })}
 `
 
 const Title = styled.h3`
@@ -98,6 +101,7 @@ const ListItem = styled(Link)`
 
 const Right = styled.div`
   flex: 1;
+  width: 100%;
 `
 
 const ContactItem = styled.div`
