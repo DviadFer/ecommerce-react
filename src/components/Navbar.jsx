@@ -114,13 +114,13 @@ const Navbar = () => {
         </Center>
         <Right>
           {location.pathname !== "/login" && location.pathname !== "/register" ? (
-            <MenuItem to="/register">
+            <MenuItem to="/login">
               <AccountCircle style={{color: "teal"}} />
               <ItemText>LOGIN</ItemText>
             </MenuItem>
           ): null}  
           {location.pathname !== "/login" && location.pathname !== "/register" ? (
-            <MenuItem component={Link} to="/login">
+            <MenuItem component={Link} to="/register">
               <VpnKey style={{color: "teal"}} />
               <ItemText>REGISTER</ItemText>
             </MenuItem>

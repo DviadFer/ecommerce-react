@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100%;
@@ -9,9 +10,9 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(${require("../assets/slider/model-4.png")})
-    , center;
+    url(${require("../assets/slider/model-4.png")});
   background-size: cover;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +22,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 50px;
   background-color: white;
+  ${mobile({width: "100%", padding: "15px", backgroundColor: "#ffffff98"})}
 `
 
 const Title = styled.h1`
@@ -67,9 +69,10 @@ const Button = styled(Link)`
 const Related = styled(Link)`
   font-size: 12px;
   text-decoration: underline;
+  color: black;
   cursor: pointer;
   &:hover {
-      font-weight: bold;
+    font-weight: bold;
   }
 `
 

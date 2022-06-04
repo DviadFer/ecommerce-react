@@ -2,6 +2,8 @@ import { CheckBox } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { mobile } from "../responsive";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -9,18 +11,20 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(${require("../assets/slider/model-5.jpeg")})
-    , center;
+    url(${require("../assets/slider/model-5.jpeg")});
   background-size: cover;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
 `
 
 const Wrapper = styled.div`
-  width: 40%;
+  width: 70%;
+  max-width: 1200px;
   padding: 50px;
   background-color: white;
+  ${mobile({width: "100%", padding: "15px", backgroundColor: "#ffffff98"})}
 `
 
 const Title = styled.h1`
@@ -33,6 +37,7 @@ const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  ${mobile({flexWrap: "nowrap", flexDirection: "column", gap: "0px"})}
 `
 
 const Input = styled.input`
@@ -42,6 +47,7 @@ const Input = styled.input`
   &::placeholder {
     font-size: 20px;
   }
+  ${mobile({marginBottom: "5px"})}
 `
 
 const Agreement = styled.span`

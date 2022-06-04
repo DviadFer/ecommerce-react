@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { Announcement } from "@material-ui/icons"
 import { Link } from "react-router-dom"
 
+import { mobile } from "../responsive";
+
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -20,14 +22,14 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 50%;
   padding: 50px;
-
+  ${mobile({width: "90%"})}
 `
 
 const Issue = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 50px;
     margin-bottom: 35px;
 `
 
