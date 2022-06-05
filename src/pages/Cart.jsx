@@ -1,7 +1,6 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-import Footer from "../components/Footer";
-
+import { Link } from "react-router-dom";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
@@ -163,20 +162,16 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
   const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
 
   const renderEmptyCart = () => (
-    <h1>No tienes items en el carro</h1>
+    <div>
+      <hr></hr>
+      <p style={{marginTop: "25px", textAlign: "center", height: "50vh"}}><b>CART EMPTY:</b> Press "Continue Shopping" button to go back.</p>
+    </div>
   );
 
   if (!cart.line_items) return 'Loading';
 
   const renderCart = () => (
     <>
-      <Top>
-        <TopButton>CONTINUE SHOPPING</TopButton>
-        <TopTexts>
-          <TopText>Shopping Bag({cart.total_items})</TopText>
-        </TopTexts>
-        <TopButton type="filled">CHECKOUT NOW</TopButton>
-      </Top>
       <Bottom>
         <Info>
           {cart.line_items.map((lineItem) => (
@@ -197,7 +192,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
                       </ProductSize>
                     ) : 
                       <ProductSize>
-                        <b>Size:</b> NOT SELECTED. By default smallest size. 
+                        <b>Size: NOT SELECTED.</b> By default smallest size. 
                       </ProductSize>
                     }
                   </Details>
@@ -231,7 +226,7 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
             <SummaryItemPrice>{cart.subtotal.raw + 3} €</SummaryItemPrice>
           </SummaryItem>
           <Button onClick={handleEmptyCart} style={{marginBottom: "15px", backgroundColor: "#942c2c"}} >Empty Cart</Button>
-          <Button>CHECKOUT NOW</Button>
+          <Link to="/checkout"><Button>CHECKOUT NOW</Button></Link>
         </Summary>
       </Bottom>
     </>
@@ -241,9 +236,14 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
     <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
+        <Top>
+        <Link to="/shop"><TopButton>CONTINUE SHOPPING</TopButton></Link>
+        <TopTexts>
+          <TopText>Shopping Bag({cart.total_items})</TopText>
+        </TopTexts>
+      </Top>
         { !cart.line_items.length ? renderEmptyCart() : renderCart() }
       </Wrapper>
-      <Footer />
     </Container>
   )
 };

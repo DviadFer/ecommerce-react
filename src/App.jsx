@@ -20,6 +20,7 @@ import WIP from './pages/WIP';
 
 //Commerce.js
 import { commerce } from './lib/commerce';
+import CheckOut from './pages/CheckOut';
 
 const App = () => {
 
@@ -51,8 +52,6 @@ const App = () => {
 
     setCart(item.cart);
   }  
-
-  console.log(cart)
 
   //Función que elimina todos los items del carro
   const handleEmptyCart = async () => {
@@ -88,6 +87,7 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />
               <Route path='/single-product/:id' element={<SingleProduct  onAddToCart={handleAddToCart} />} />
+              <Route path='/checkout' element={<CheckOut cart={cart} />} />
             </Routes>
           </ScrollToTop>
         <Footer />

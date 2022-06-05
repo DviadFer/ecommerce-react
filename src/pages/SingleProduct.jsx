@@ -36,6 +36,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  flex-wrap: wrap;
   ${mobile({ padding: "10px", flexDirection:"column" })}
 `
 
@@ -88,7 +89,11 @@ const FilterTitle = styled.span`
 
 const FilterSizeOption = styled.div`
   padding: 5px;
-  border: 1px solid gray;
+  border: ${
+      props => props.active ?
+          "2px solid black" :
+          "1px solid gray"
+  };
   width: 20px;
   height: 20px;
   text-align: center;
@@ -160,6 +165,8 @@ const Back = styled(Link)`
 
 const Product = ({  onAddToCart }) => {
 
+
+  const [chosen, setChosen] = useState();
   //Fetch de producto por id 
   const [productById, setProductById] = useState({});
 
@@ -201,8 +208,6 @@ const Product = ({  onAddToCart }) => {
     setCounter(counter - 1)
   }
 
-  console.log(productById)
-
   return (
     <Container>
       <Wrapper>
@@ -215,14 +220,14 @@ const Product = ({  onAddToCart }) => {
             <FilterContainer>
               <Filter>
                 <FilterTitle>{productById.variant_groups[0].name}</FilterTitle>
-                {productById.variant_groups[0].options.map((option) => (
-                  <FilterSizeOption onClick={() => {
+                {productById.variant_groups[0].options.map((option, index) => (
+                  <FilterSizeOption active={index === chosen ? true : null} onClick={() => {
                     updateOptions(
                       {
                         id: option.id,
                         variantId: productById.variant_groups[0].id,
                       }
-                    )}
+                    ); setChosen(index)}
                   } >{option.name}</FilterSizeOption>
                 ))}
               </Filter>
