@@ -78,6 +78,7 @@ const FilterContainer = styled.div`
 const Filter = styled.div`
   display: flex;
   align-items: center;
+  gap: 15px;
 `
 
 const FilterTitle = styled.span`
@@ -85,27 +86,15 @@ const FilterTitle = styled.span`
   font-weight: 200;
 `
 
-const FilterColor = styled.div`
+const FilterSizeOption = styled.div`
+  padding: 5px;
+  border: 1px solid gray;
   width: 20px;
   height: 20px;
+  text-align: center;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  box-shadow: 2px 2px 2px lightgray;
   cursor: pointer;
-  &:focus {
-    outline: black;
-  }
-`
-
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-  background-color: white;
-  border: 1px solid gray;  
-`
-
-const FilterSizeOption = styled.option``;
+`;
 
 const AddContainer = styled.div`
   width: 100%;
@@ -185,27 +174,34 @@ const Product = ({  onAddToCart }) => {
       variant_groups
     })
   }
-
+  
   useEffect(() => {
     const id = window.location.pathname.split("/")
-    
     fetchProductById(id[2]);
   }, []);
 
-  //  Counter is a state initialized to 1
+  //Actualizar el producto con la variante selecionada
+  const updateOptions = ({ id, variantId }) => {
+    setProductById({
+      ...productById,
+      options: { 
+        [variantId]: id ,
+      },
+    })
+  }
+
+  //Contador para añadir x cantidad de productos al carrito
   const [counter, setCounter] = useState(1)
-  
-  // Function is called everytime increment button is clicked
+ 
   const handleClickAdd = () => {
-    // Counter state is incremented
     setCounter(counter + 1)
   }
   
-  // Function is called everytime decrement button is clicked
   const handleClickRemove = () => {
-    // Counter state is decremented
     setCounter(counter - 1)
   }
+
+  console.log(productById)
 
   return (
     <Container>
@@ -218,18 +214,17 @@ const Product = ({  onAddToCart }) => {
           {productById.variant_groups?.length ? (
             <FilterContainer>
               <Filter>
-                <FilterTitle>{productById.variant_groups[1].name}</FilterTitle>
-                {productById.variant_groups[1].options.map((option) => (
-                  <FilterColor color={option.name} />
-                ))}
-              </Filter>
-              <Filter>
                 <FilterTitle>{productById.variant_groups[0].name}</FilterTitle>
-                <FilterSize>
-                  {productById.variant_groups[0].options.map((option) => (
-                    <FilterSizeOption>{option.name}</FilterSizeOption>
-                  ))}
-                </FilterSize>
+                {productById.variant_groups[0].options.map((option) => (
+                  <FilterSizeOption onClick={() => {
+                    updateOptions(
+                      {
+                        id: option.id,
+                        variantId: productById.variant_groups[0].id,
+                      }
+                    )}
+                  } >{option.name}</FilterSizeOption>
+                ))}
               </Filter>
             </FilterContainer>
           ): null}
@@ -239,7 +234,7 @@ const Product = ({  onAddToCart }) => {
               <Amount>{counter}</Amount>
               <Add onClick={handleClickAdd} />
             </AmountContainer>
-            <Button onClick={() => onAddToCart(productById.id, counter)}>
+            <Button onClick={() => onAddToCart(productById.id, counter, productById.options)}>
               ADD TO CART
             </Button>
           </AddContainer>

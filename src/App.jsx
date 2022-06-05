@@ -46,8 +46,8 @@ const App = () => {
   }, [])
 
   //Función que actualiza el carro creado con los items añadidos
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
+  const handleAddToCart = async (productId, quantity, options = {}) => {
+    const item = await commerce.cart.add(productId, quantity, {...options,});
 
     setCart(item.cart);
   }  

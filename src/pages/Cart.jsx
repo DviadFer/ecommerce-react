@@ -83,13 +83,6 @@ const ProductName = styled.span``;
 
 const ProductId = styled.span``;
 
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`
-
 const ProductSize = styled.span``
 
 const PriceDetail = styled.div`
@@ -198,10 +191,15 @@ const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
                     <ProductId>
                       <b>ID:</b> {lineItem.id.slice(5)}
                     </ProductId>
-                    <ProductColor color="black" />
-                    <ProductSize>
-                      <b>Size:</b> 37.5
-                    </ProductSize>
+                    {lineItem.selected_options?.length ? (
+                      <ProductSize>
+                        <b>Size:</b> {lineItem.selected_options[0].option_name}
+                      </ProductSize>
+                    ) : 
+                      <ProductSize>
+                        <b>Size:</b> NOT SELECTED. By default smallest size. 
+                      </ProductSize>
+                    }
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
