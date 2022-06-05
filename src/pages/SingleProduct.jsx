@@ -26,7 +26,7 @@ const animatePop = keyframes`
 const Container = styled.div`
   width: 90%;
   max-width: 1200px;
-  height: fit-content;
+  height: 100vh;
   margin: auto;
   animation-duration: 1s;
   animation-name: ${animatePop};

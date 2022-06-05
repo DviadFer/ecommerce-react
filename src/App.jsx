@@ -17,10 +17,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SingleProduct from "./pages/SingleProduct"
 import WIP from './pages/WIP';
+import CheckOut from './pages/CheckOut';
 
 //Commerce.js
 import { commerce } from './lib/commerce';
-import CheckOut from './pages/CheckOut';
+
 
 const App = () => {
 
