@@ -118,6 +118,7 @@ const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
+  cursor: pointer;
 `
 
 const Amount = styled.span`
@@ -129,6 +130,7 @@ const Amount = styled.span`
   align-items: center;
   justify-content: center;
   margin: 0px 5px;
+  cursor: auto;
 `
 
 const Button = styled.button`

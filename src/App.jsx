@@ -61,6 +61,19 @@ const App = () => {
     setCart(response.cart);
   };
 
+  //Funciones para actualizar la cantidad o eliminar un producto especifico dentro de el carro 
+  const handleUpdateCartQty = async (lineItemId, quantity) => {
+    const response = await commerce.cart.update(lineItemId, { quantity });
+
+    setCart(response.cart);
+  };
+
+  const handleRemoveFromCart = async (lineItemId) => {
+    const response = await commerce.cart.remove(lineItemId);
+
+    setCart(response.cart);
+  };
+
   return (
     <Router>
       <div>
@@ -70,7 +83,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/shop' element={<Shop products={products}/>} />
-              <Route path='/cart' element={<Cart cart={cart} onEmptyCart={handleEmptyCart} />} />
+              <Route path='/cart' element={<Cart cart={cart} onEmptyCart={handleEmptyCart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />

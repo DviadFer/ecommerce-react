@@ -98,19 +98,20 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${mobile({margin: "15px 0px"})}
+  gap: 20px;
 `
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  cursor: pointer;
 `
 
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
   ${mobile({ margin: "5px 15px" })}
+  cursor: auto;
 `
 
 const ProductPrice = styled.div`
@@ -160,10 +161,13 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const Cart = ({ cart, onEmptyCart }) => {
-
+const Cart = ({ cart, onEmptyCart, onUpdateCartQty, onRemoveFromCart }) => {
 
   const handleEmptyCart = () => onEmptyCart();
+
+  const handleUpdateCartQty = (lineItemId, newQuantity) => onUpdateCartQty(lineItemId, newQuantity);
+
+  const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
 
   const renderEmptyCart = () => (
     <h1>No tienes items en el carro</h1>
@@ -202,10 +206,11 @@ const Cart = ({ cart, onEmptyCart }) => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
+                    <Remove onClick={() => handleUpdateCartQty(lineItem.id, lineItem.quantity - 1)} />
                     <ProductAmount>{lineItem.quantity}</ProductAmount>
-                    <Remove />
+                    <Add onClick={() => handleUpdateCartQty(lineItem.id, lineItem.quantity + 1)} />
                   </ProductAmountContainer>
+                  <Button style={{width: "80px", backgroundColor: "#942c2c"}} onClick={() => handleRemoveFromCart(lineItem.id)} >Remove</Button>
                   <ProductPrice>{lineItem.line_total.raw} €</ProductPrice>
                 </PriceDetail>
               </Product>
