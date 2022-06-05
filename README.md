@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# 🛒 FCT Project - React front-end app for ecommerce business.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ESP
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+Esta es una plicación front-end desarrollada como plantilla para una plataforma ecommerce y realizada integramente en React.
 
-### `npm start`
+Esta aplicación fue creada por **Diego Viador Ferreira** como proyecto de final de ciclo en el ciclo de formación superior Desarrollo de Aplicaciones Web. Su estructura inicial fue creada con el comando `npx create-react-app`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Instalar Módulos
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para instalar los módulos necesarios para la aplicación, debes ejecutar el comando `npm install` en el terminal.
 
-### `npm test`
+## Ejecutar la Aplicación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para iniciar la aplicación, debes ejecutar el comando `npm start` en el terminal. Si trabajas con Visual Studio Code, puedes abrir el terminal con el atajo de teclado `ctrl + ñ` si tu teclado está en español y con ```ctrl + ` ``` si tu teclado está en inglés. 
 
-### `npm run build`
+La aplicación se abrirá automáticamente en el navegador configurado por defecto en tu dispositivo y se ejecutará en `localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ENG
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This is a front-end application developed as a template for an ecommerce platform, which was made entirely in React.
 
-### `npm run eject`
+This application was created by **Diego Viador Ferreira** as a final project in the Web Application Development official course, equivalent of Certificate of Higher Education (HNC). Its initial structure was created with the `npx create-react-app` command.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Install Modules
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To install the necessary modules for the application, you need to run the `npm install` command in the terminal.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Run the Application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To start the application, you need to run the `npm start` command in the terminal. If you work with Visual Studio Code, you can open the terminal with the keyboard shortcut `ctrl + ñ` if your keyboard is in Spanish and with ```ctrl + ` ``` if your keyboard is in English.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app will automatically open in your device's default browser and run on `localhost:3000`.
