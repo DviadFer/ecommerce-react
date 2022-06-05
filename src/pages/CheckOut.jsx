@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 
 const Container = styled.div`
-margin: auto;
+  margin: auto;
   height: 60vh;
   width: 90%;
   max-width: 1200px;
@@ -23,6 +23,9 @@ const Output = styled.div`
 `
 
 const CheckOut = ({ cart }) => {
+  
+  console.log(cart)
+
   return (
     <Container>
         <Title>Cart output to manage in Back-end created!</Title>
