@@ -190,6 +190,21 @@ const Product = ({  onAddToCart }) => {
     fetchProductById(id[2]);
   }, []);
 
+  //  Counter is a state initialized to 1
+  const [counter, setCounter] = useState(1)
+  
+  // Function is called everytime increment button is clicked
+  const handleClickAdd = () => {
+    // Counter state is incremented
+    setCounter(counter + 1)
+  }
+  
+  // Function is called everytime decrement button is clicked
+  const handleClickRemove = () => {
+    // Counter state is decremented
+    setCounter(counter - 1)
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -218,11 +233,11 @@ const Product = ({  onAddToCart }) => {
           ): null}
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={handleClickRemove} />
+              <Amount>{counter}</Amount>
+              <Add onClick={handleClickAdd} />
             </AmountContainer>
-            <Button onClick={() => onAddToCart(productById.id, 1)}>
+            <Button onClick={() => onAddToCart(productById.id, counter)}>
               ADD TO CART
             </Button>
           </AddContainer>

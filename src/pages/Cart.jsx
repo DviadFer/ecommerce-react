@@ -4,7 +4,11 @@ import Footer from "../components/Footer";
 
 import { mobile } from "../responsive";
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -20,7 +24,7 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 0px;
 `
 
 const TopButton = styled.button`
@@ -39,7 +43,6 @@ const TopTexts = styled.div`
 
 const TopText = styled.span`
   text-decoration: underline;
-  cursor: pointer;
   margin: 0px 10px;
 `
 
@@ -66,6 +69,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
+  ${mobile({width: "150px"})}
 `
 
 const Details = styled.div`
@@ -94,6 +98,7 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${mobile({margin: "15px 0px"})}
 `
 
 const ProductAmountContainer = styled.div`
@@ -118,6 +123,7 @@ const Hr = styled.hr`
   background-color: #eee;
   border: none;
   height: 1px;
+  margin-bottom: 15px;
 `
 
 const Summary = styled.div`
@@ -148,102 +154,97 @@ const Button = styled.button`
   width: 100%;
   padding: 10px;
   background-color: black;
+  border: none;
   color: white;
   font-weight: 600;
+  cursor: pointer;
 `
 
-const Cart = () => {
+const Cart = ({ cart, onEmptyCart }) => {
+
+
+  const handleEmptyCart = () => onEmptyCart();
+
+  const renderEmptyCart = () => (
+    <h1>No tienes items en el carro</h1>
+  );
+
+  if (!cart.line_items) return 'Loading';
+
+  const renderCart = () => (
+    <>
+      <Top>
+        <TopButton>CONTINUE SHOPPING</TopButton>
+        <TopTexts>
+          <TopText>Shopping Bag({cart.total_items})</TopText>
+        </TopTexts>
+        <TopButton type="filled">CHECKOUT NOW</TopButton>
+      </Top>
+      <Bottom>
+        <Info>
+          {cart.line_items.map((lineItem) => (
+            <>
+              <Product>
+                <ProductDetail>
+                  <Image src={lineItem.image.url} />
+                  <Details>
+                    <ProductName>
+                      <b>Product:</b> {lineItem.name}
+                    </ProductName>
+                    <ProductId>
+                      <b>ID:</b> {lineItem.id.slice(5)}
+                    </ProductId>
+                    <ProductColor color="black" />
+                    <ProductSize>
+                      <b>Size:</b> 37.5
+                    </ProductSize>
+                  </Details>
+                </ProductDetail>
+                <PriceDetail>
+                  <ProductAmountContainer>
+                    <Add />
+                    <ProductAmount>{lineItem.quantity}</ProductAmount>
+                    <Remove />
+                  </ProductAmountContainer>
+                  <ProductPrice>{lineItem.line_total.raw} €</ProductPrice>
+                </PriceDetail>
+              </Product>
+              <Hr />
+            </>   
+          ))}
+        </Info>
+        <Summary>
+          <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+          <SummaryItem>
+            <SummaryItemText>Subtotal</SummaryItemText>
+            <SummaryItemPrice>{cart.subtotal.raw} €</SummaryItemPrice>
+          </SummaryItem>
+          <SummaryItem>
+            <SummaryItemText>Estimated Shipping</SummaryItemText>
+            <SummaryItemPrice>$ 3.00</SummaryItemPrice>
+          </SummaryItem>
+          <SummaryItem type="total">
+            <SummaryItemText>Total</SummaryItemText>
+            <SummaryItemPrice>{cart.subtotal.raw + 3} €</SummaryItemPrice>
+          </SummaryItem>
+          <Button onClick={handleEmptyCart} style={{marginBottom: "15px", backgroundColor: "#942c2c"}} >Empty Cart</Button>
+          <Button>CHECKOUT NOW</Button>
+        </Summary>
+      </Bottom>
+    </>
+  )
+
   return (
     <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
-        <Bottom>
-          <Info>
-            <Product>
-              <ProductDetail>
-                <Image src={require("../assets/popularProducts/product-8.png")} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b> 37.5
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src={require("../assets/popularProducts/product-5.png")} />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> HAKURA T-SHIRT
-                  </ProductName>
-                  <ProductId>
-                    <b>ID:</b> 93813718293
-                  </ProductId>
-                  <ProductColor color="gray" />
-                  <ProductSize>
-                    <b>Size:</b> M
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
-              </PriceDetail>
-            </Product>
-          </Info>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
-            </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
-          </Summary>
-        </Bottom>
+        { !cart.line_items.length ? renderEmptyCart() : renderCart() }
       </Wrapper>
       <Footer />
     </Container>
   )
-}
+};
+
+
 
 export default Cart

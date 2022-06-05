@@ -54,6 +54,13 @@ const App = () => {
 
   console.log(cart)
 
+  //Función que elimina todos los items del carro
+  const handleEmptyCart = async () => {
+    const response = await commerce.cart.empty();
+
+    setCart(response.cart);
+  };
+
   return (
     <Router>
       <div>
@@ -63,7 +70,7 @@ const App = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/shop' element={<Shop products={products}/>} />
-              <Route path='/cart' element={<Cart />} />
+              <Route path='/cart' element={<Cart cart={cart} onEmptyCart={handleEmptyCart} />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/not-found' element={<WIP />} />
