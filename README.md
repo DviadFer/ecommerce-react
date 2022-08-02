@@ -1,12 +1,12 @@
 # 🛒 FCT Project - React front-end app for ecommerce business.
 
-Esta es una plicación front-end desarrollada como plantilla para una plataforma ecommerce y realizada integramente en React.
+Esta es una plicación front-end desarrollada como plantilla para una plataforma ecommerce y realizada integramente en React. Se requiere la instalación de **Node.js** para su ejecución.
 
 Esta aplicación fue creada por **Diego Viador Ferreira** como proyecto de final de ciclo en el ciclo de formación superior Desarrollo de Aplicaciones Web. Su estructura inicial fue creada con el comando `npx create-react-app`.
 
 ## Instalar Módulos
 
-Para instalar los módulos necesarios para la aplicación, debes ejecutar el comando `npm install` en el terminal.
+Para instalar los módulos necesarios para la aplicación, debes ejecutar el comando `npm install --force` en el terminal.
 
 ## Ejecutar la Aplicación
 
@@ -16,13 +16,13 @@ La aplicación se abrirá automáticamente en el navegador configurado por defec
 
 ---
 
-This is a front-end application developed as a template for an ecommerce platform, which was made entirely in React.
+This is a front-end application developed as a template for an ecommerce platform, which was made entirely in React. **Node.js** is required in order to run this aplication.
 
 This application was created by **Diego Viador Ferreira** as a final project in the Web Application Development official course, equivalent of Certificate of Higher Education (HNC). Its initial structure was created with the `npx create-react-app` command.
 
 ## Install Modules
 
-To install the necessary modules for the application, you need to run the `npm install` command in the terminal.
+To install the necessary modules for the application, you need to run the `npm install --force` command in the terminal.
 
 ## Run the Application
 
